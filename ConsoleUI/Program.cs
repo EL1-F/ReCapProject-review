@@ -2,6 +2,7 @@
 using DataAccess.Concrete.EntityFramework;
 using DataAccess.Concrete.InMemory;
 using Entities.Concrete;
+using System.Diagnostics;
 
 internal class Program
 {
@@ -10,6 +11,35 @@ internal class Program
         //CarTest();
         //BrandTest();
         //ColorTest();
+        //UserAddTest();
+        //CustomerAddTest();
+        //RentalTest();
+    }
+
+    private static void RentalTest()
+    {
+        RentalManager rentalManager = new RentalManager(new EfRentalDal());
+
+       // var result = rentalManager.Add(new Rental {CarId=2,CustomerId=1,RentDate=new DateTime(2023,10,7,8,0,0),ReturnDate=new DateTime(2023,10,12,9,0,0)});
+        var result = rentalManager.Add(new Rental { CarId = 3, CustomerId = 1, RentDate = new DateTime(2023, 10, 14, 8, 0, 0)});
+        Console.WriteLine(result.Message);
+
+    }
+
+    private static void CustomerAddTest()
+    {
+        CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+
+        var result = customerManager.Add(new Customer {UserId=1,CompanyName="ElifCompany" });
+        Console.WriteLine(result.Message);
+    }
+
+    private static void UserAddTest()
+    {
+        UserManager userManager = new UserManager(new EfUserDal());
+
+        var result = userManager.Add(new User { FirstName = "Tarık", LastName = "Yıldırmış", Email = "tarik@info.com", Password = "212121" });
+        Console.WriteLine(result.Message);
     }
 
     private static void CarTest()
