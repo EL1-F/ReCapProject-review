@@ -17,6 +17,6 @@ namespace Entities.DTOs
         public DateTime? ReturnDate { get; set; }
 
 
-        public decimal TotalPrice { get; set; }
+        public decimal? TotalPrice { get; set; }
     }
 }
